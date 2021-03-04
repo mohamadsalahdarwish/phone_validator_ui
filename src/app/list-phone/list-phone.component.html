@@ -1,0 +1,28 @@
+<h3 style="text-align:Left; padding: 25px 50px 30px 100px;">Phone List Validation</h3>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>State</th>
+      <th>Code</th>
+      <th>number</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let phone of phoneList">
+      <td>{{phone.name}}</td>
+      <td>{{phone.country}}</td>
+
+      <td>{{phone.state}}</td>
+
+      <td>{{phone.countryCode}}</td>
+
+      <td>{{phone.number}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
