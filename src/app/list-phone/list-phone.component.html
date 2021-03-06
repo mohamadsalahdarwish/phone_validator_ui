@@ -5,7 +5,31 @@
 <div *ngIf="isDataFound" class="container">
 
 
+  <mat-form-field>
+    <mat-select  [(value)]="selectedFilter" placeholder="Select Filter Type">
+      <mat-option *ngFor="let type of searchFields" [value]="type.value">
+        {{ type.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
+  <mat-form-field >
+    <mat-select  [(value)]="selectedFilterValue" placeholder="Select Filter Value">
+      <mat-option *ngFor="let type of getSearchValues()" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button style="margin-top: 25px;
+  margin-bottom: 35px;
+  margin-left: 20px;
+  margin-right: 10px;" mat-raised-button color="primary" (click)="applyFilter(1)">Filter</button>
+
+<button style="margin-top: 25px;
+margin-bottom: 35px;
+margin-left: 20px;
+margin-right: 10px;" mat-raised-button color="warn" (click)="removeFilter()">Remove Filter</button>
 
 
 <table class="table">
@@ -35,10 +59,10 @@
 </table>
 
 
-<mat-paginator [length]="theTotalElements"
+<mat-paginator #paginator [length]="theTotalElements"
                [pageSize]="thePageSize"
                [pageSizeOptions]="[5]"
-               (page)="pageEvent = $event;retrieveDataByPage(pageEvent.pageIndex)">
+               (page)="pageEvent = $event;showData(pageEvent.pageIndex)">
 </mat-paginator>
 
 
