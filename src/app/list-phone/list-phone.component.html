@@ -1,5 +1,8 @@
+
 <h3 style="text-align:Left; padding: 25px 50px 30px 100px;">Phone List Validation</h3>
-<div class="container">
+<h4 *ngIf="!isDataFound" style="text-align: center"> No Data Found</h4>
+
+<div *ngIf="isDataFound" class="container">
 <table class="table">
   <thead>
     <tr>
