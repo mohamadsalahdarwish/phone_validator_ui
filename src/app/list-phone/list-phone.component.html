@@ -3,6 +3,11 @@
 <h4 *ngIf="!isDataFound" style="text-align: center"> No Data Found</h4>
 
 <div *ngIf="isDataFound" class="container">
+
+
+
+
+
 <table class="table">
   <thead>
     <tr>
@@ -28,4 +33,13 @@
     </tr>
   </tbody>
 </table>
+
+
+<mat-paginator [length]="theTotalElements"
+               [pageSize]="thePageSize"
+               [pageSizeOptions]="[5]"
+               (page)="pageEvent = $event;retrieveDataByPage(pageEvent.pageIndex)">
+</mat-paginator>
+
+
 </div>

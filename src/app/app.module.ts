@@ -1,3 +1,4 @@
+import { MaterialModule } from './material.module';
 import {  HttpClientModule } from '@angular/common/http';
 
 
@@ -9,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ListPhoneComponent } from './list-phone/list-phone.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

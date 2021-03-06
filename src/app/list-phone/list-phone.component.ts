@@ -1,7 +1,11 @@
 import { PhoneServiceService } from './../service/phone-service.service';
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material';
 
 export class PhoneItem {
+
+  value ="";
+
   constructor(public name:string,
     public  country :string,
     public state :string,
@@ -14,7 +18,7 @@ export class PhoneItem {
 
 export class PhoneGridResponse  {
   constructor(public totalPages: number,
-     public  phones: PhoneItem[]){
+     public  phones: PhoneItem[], public totalElements:number){
 
      }
 
@@ -43,11 +47,16 @@ export class InMemorySearchRequest {
 export class ListPhoneComponent implements OnInit {
 
     isDataFound : boolean = false;
-    pageSize : number;
+    totalPages : number;
 
   constructor(    public phoneService:PhoneServiceService ) { }
 
   phoneList :PhoneItem[];
+
+
+  thePageSize: number = 5;
+  theTotalElements: number = 0;
+  pageEvent: PageEvent;
 
 
 
@@ -56,7 +65,8 @@ export class ListPhoneComponent implements OnInit {
       response => {
         console.log(response);
         this.phoneList = response.phones;
-        this.pageSize = response.totalPages;
+        this.totalPages = response.totalPages;
+        this.theTotalElements =  response.totalElements;
         if(this.phoneList.length >0) this.isDataFound = true;
       }
     )
@@ -64,12 +74,11 @@ export class ListPhoneComponent implements OnInit {
 
 
   retrieveDataByPage(pageNumber :number){
-    this.phoneService.retrieveAllPhones(pageNumber).subscribe(
+
+    this.phoneService.retrieveAllPhones(pageNumber+1).subscribe(
       response => {
         console.log(response);
         this.phoneList = response.phones;
-        this.pageSize = response.totalPages;
-        if(this.phoneList.length >0) this.isDataFound = true;
       }
     )
   }
