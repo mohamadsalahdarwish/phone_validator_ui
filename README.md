@@ -2,3 +2,4 @@
 2- Open cmd, terminal.<br/>
 3- Go to root folder.<br/>
 4- Type "docker-compose up --build".<br/>
+5- Open http://localhost:4500/
